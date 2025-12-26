@@ -41,24 +41,27 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <AnnouncementBar />
-      <Navigation onRegisterClick={handleRegisterClick} />
-      <main>
-        <HeroSection onRegisterClick={handleRegisterClick} />
-        <QuickInfoGrid onRegisterClick={handleRegisterClick} />
-        <IntroductionSection />
-        <EventScheduleSection onRegisterClick={handleRegisterClick} />
-        <GallerySection />
-        <DivineRootsSection />
-        <TrimurtiSection onRegisterClick={handleRegisterClick} />
-        <MahamaghamSection />
-        <ValluvanadSection />
-        <DisruptionSection />
-        <RevivalSection onRegisterClick={handleRegisterClick} />
-        <MaghaMasamSection />
-        <BharathappuzhaSection />
-        <CallToDharmaSection />
-        <FooterSection onRegisterClick={handleRegisterClick} />
-      </main>
+      {/* Add padding-top to account for fixed announcement bar */}
+      <div className="pt-10">
+        <Navigation onRegisterClick={handleRegisterClick} />
+        <main>
+          <HeroSection onRegisterClick={handleRegisterClick} />
+          <QuickInfoGrid onRegisterClick={handleRegisterClick} />
+          <IntroductionSection />
+          <EventScheduleSection onRegisterClick={handleRegisterClick} />
+          <GallerySection />
+          <DivineRootsSection />
+          <TrimurtiSection onRegisterClick={handleRegisterClick} />
+          <MahamaghamSection />
+          <ValluvanadSection />
+          <DisruptionSection />
+          <RevivalSection onRegisterClick={handleRegisterClick} />
+          <MaghaMasamSection />
+          <BharathappuzhaSection />
+          <CallToDharmaSection />
+          <FooterSection onRegisterClick={handleRegisterClick} />
+        </main>
+      </div>
       <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
