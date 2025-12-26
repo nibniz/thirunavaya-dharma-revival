@@ -1,12 +1,27 @@
 import { motion } from "framer-motion";
+import heroImage from "@/assets/hero-temple.jpg";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onRegisterClick: () => void;
+}
+
+const HeroSection = ({ onRegisterClick }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden sacred-pattern">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="Thirunavaya Temple at sunrise on the banks of Bharathappuzha"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+      </div>
+
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </div>
 
       <div className="section-container relative z-10 text-center py-20">
@@ -36,7 +51,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-display text-xl md:text-2xl italic text-muted-foreground mb-8"
+          className="font-display text-xl md:text-2xl italic text-foreground/80 mb-8"
         >
           Reclaiming Kerala's Ancient Spiritual Nucleus
         </motion.p>
@@ -52,20 +67,38 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-body"
+          className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-body mb-10"
         >
           On the sacred banks of Bharathappuzha, the Thirunavaya Mahamagha Mahotsavam 
           marks the revival of a civilizational tradition that once guided Dharma, 
-          governance, and culture in Kerala. Rooted in the sacred month of Magha, 
-          this Mahamagham restores Thirunavaya to its rightful place as a national 
-          spiritual center of India.
+          governance, and culture in Kerala.
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-12"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
+          <button
+            onClick={onRegisterClick}
+            className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-saffron-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Register Now
+          </button>
+          <a
+            href="#schedule"
+            className="px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          >
+            View Schedule
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
         >
           <a
             href="#introduction"
@@ -90,10 +123,10 @@ const HeroSection = () => {
       </div>
 
       {/* Decorative corner elements */}
-      <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-primary/20" />
-      <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-primary/20" />
-      <div className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-primary/20" />
-      <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-primary/20" />
+      <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-primary/30" />
+      <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-primary/30" />
+      <div className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-primary/30" />
+      <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-primary/30" />
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import SectionWrapper from "./SectionWrapper";
 import { motion } from "framer-motion";
+import galleryYajna from "@/assets/gallery-yajna.jpg";
 
 const DivineRootsSection = () => {
   return (
@@ -10,7 +11,7 @@ const DivineRootsSection = () => {
         <div className="sacred-divider" />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -40,19 +41,22 @@ const DivineRootsSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-card p-8 border border-sacred-border rounded-lg"
+          className="relative"
         >
-          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
+          <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src={galleryYajna}
+              alt="Vedic Yajna fire ceremony"
+              className="w-full h-80 lg:h-96 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <p className="text-primary-foreground font-display text-lg italic">
+                "The holy Tirthas declared that their divine presence would remain 
+                in the River Nila every year during the month of Magha."
+              </p>
+            </div>
           </div>
-          <p className="body-text text-center italic">
-            "Rishis, Saptarshis, and all divine beings witnessed this sacred event. 
-            Upon completion of the Yajna, the holy Tirthas declared that their divine 
-            presence would remain in the River Nila every year during the month of Magha, 
-            granting atonement, merit, and spiritual upliftment to the land and its people."
-          </p>
         </motion.div>
       </div>
     </SectionWrapper>

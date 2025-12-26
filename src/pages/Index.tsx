@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import IntroductionSection from "@/components/IntroductionSection";
@@ -11,25 +12,50 @@ import MaghaMasamSection from "@/components/MaghaMasamSection";
 import BharathappuzhaSection from "@/components/BharathappuzhaSection";
 import CallToDharmaSection from "@/components/CallToDharmaSection";
 import ContactSection from "@/components/ContactSection";
+import EventScheduleSection from "@/components/EventScheduleSection";
+import GallerySection from "@/components/GallerySection";
+import RegistrationModal from "@/components/RegistrationModal";
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasShownPopup, setHasShownPopup] = useState(false);
+
+  // Auto popup after 5 seconds
+  useEffect(() => {
+    if (!hasShownPopup) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+        setHasShownPopup(true);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [hasShownPopup]);
+
+  const handleRegisterClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <Navigation onRegisterClick={handleRegisterClick} />
       <main>
-        <HeroSection />
+        <HeroSection onRegisterClick={handleRegisterClick} />
         <IntroductionSection />
+        <EventScheduleSection onRegisterClick={handleRegisterClick} />
+        <GallerySection />
         <DivineRootsSection />
-        <TrimurtiSection />
+        <TrimurtiSection onRegisterClick={handleRegisterClick} />
         <MahamaghamSection />
         <ValluvanadSection />
         <DisruptionSection />
-        <RevivalSection />
+        <RevivalSection onRegisterClick={handleRegisterClick} />
         <MaghaMasamSection />
         <BharathappuzhaSection />
         <CallToDharmaSection />
-        <ContactSection />
+        <ContactSection onRegisterClick={handleRegisterClick} />
       </main>
+      <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
