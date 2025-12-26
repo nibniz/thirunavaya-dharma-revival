@@ -2,15 +2,19 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: "#introduction", label: "Introduction" },
-  { href: "#divine-roots", label: "Origins" },
+  { href: "#introduction", label: "About" },
+  { href: "#schedule", label: "Schedule" },
+  { href: "#gallery", label: "Gallery" },
   { href: "#trimurti", label: "Trimurti" },
-  { href: "#mahamagham", label: "Mahamagham" },
   { href: "#revival", label: "Revival" },
   { href: "#contact", label: "Contact" },
 ];
 
-const Navigation = () => {
+interface NavigationProps {
+  onRegisterClick: () => void;
+}
+
+const Navigation = ({ onRegisterClick }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -31,7 +35,7 @@ const Navigation = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-            : "bg-transparent"
+            : "bg-background/30 backdrop-blur-sm"
         }`}
       >
         <div className="section-container">
@@ -41,7 +45,7 @@ const Navigation = () => {
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -51,6 +55,12 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={onRegisterClick}
+                className="px-5 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-saffron-dark transition-all duration-300 text-sm"
+              >
+                Register
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -92,6 +102,15 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onRegisterClick();
+                }}
+                className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-saffron-dark transition-all duration-300 mt-4"
+              >
+                Register Now
+              </button>
             </div>
           </motion.div>
         )}

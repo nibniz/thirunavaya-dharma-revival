@@ -1,5 +1,6 @@
 import SectionWrapper from "./SectionWrapper";
 import { motion } from "framer-motion";
+import galleryTempleInterior from "@/assets/gallery-temple-interior.jpg";
 
 const trimurtiData = [
   {
@@ -22,7 +23,11 @@ const trimurtiData = [
   },
 ];
 
-const TrimurtiSection = () => {
+interface TrimurtiSectionProps {
+  onRegisterClick: () => void;
+}
+
+const TrimurtiSection = ({ onRegisterClick }: TrimurtiSectionProps) => {
   return (
     <SectionWrapper id="trimurti" className="bg-secondary">
       <div className="text-center mb-16">
@@ -35,26 +40,46 @@ const TrimurtiSection = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
-        {trimurtiData.map((item, index) => (
-          <motion.div
-            key={item.deity}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-            className="text-center"
-          >
-            <div className="w-20 h-20 bg-card border-2 border-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
-              {item.icon}
-            </div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-              {item.deity}
-            </h3>
-            <p className="text-primary font-medium mb-2">{item.title}</p>
-            <p className="text-muted-foreground">{item.description}</p>
-          </motion.div>
-        ))}
+      <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-xl overflow-hidden shadow-2xl order-2 lg:order-1"
+        >
+          <img
+            src={galleryTempleInterior}
+            alt="Temple interior with devotees in prayer"
+            className="w-full h-80 lg:h-[400px] object-cover"
+          />
+        </motion.div>
+
+        <div className="order-1 lg:order-2">
+          <div className="space-y-6">
+            {trimurtiData.map((item, index) => (
+              <motion.div
+                key={item.deity}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex items-start gap-4 bg-card p-6 border border-sacred-border rounded-lg"
+              >
+                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 text-2xl">
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-semibold text-foreground">
+                    {item.deity}
+                  </h3>
+                  <p className="text-primary font-medium">{item.title}</p>
+                  <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <motion.div
@@ -64,11 +89,17 @@ const TrimurtiSection = () => {
         transition={{ duration: 0.8 }}
         className="bg-card p-8 border border-sacred-border rounded-lg text-center max-w-3xl mx-auto"
       >
-        <p className="body-text">
+        <p className="body-text mb-6">
           This sacred geometry establishes Thirunavaya as a <strong className="text-primary">Trimurti Sangama</strong> and 
           a <strong className="text-primary">Mokshasthali</strong>, comparable to Gaya. From time immemorial, 
           devotees have performed Pithru Karma (ancestral rites) here, seeking liberation and spiritual fulfillment.
         </p>
+        <button
+          onClick={onRegisterClick}
+          className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-saffron-dark transition-all duration-300"
+        >
+          Join the Sacred Gathering
+        </button>
       </motion.div>
     </SectionWrapper>
   );
