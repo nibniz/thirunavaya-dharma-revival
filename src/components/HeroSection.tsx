@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-temple.jpg";
-import { ChevronDown } from "lucide-react";
 
 interface HeroSectionProps {
   onRegisterClick: () => void;
@@ -106,26 +105,6 @@ const HeroSection = ({ onRegisterClick }: HeroSectionProps) => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - positioned at bottom, above border */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-        className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20"
-      >
-        <a
-          href="#quickinfo"
-          className="flex flex-col items-center gap-1 md:gap-2 text-primary-foreground/60 hover:text-primary transition-colors"
-        >
-          <span className="text-[10px] md:text-xs uppercase tracking-widest">Scroll to Explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ChevronDown className="w-5 h-5 md:w-6 md:h-6" />
-          </motion.div>
-        </a>
-      </motion.div>
 
       {/* Bottom decorative border */}
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-gold to-primary" />
