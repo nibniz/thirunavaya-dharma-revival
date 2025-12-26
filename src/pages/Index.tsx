@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
+import QuickInfoGrid from "@/components/QuickInfoGrid";
 import IntroductionSection from "@/components/IntroductionSection";
 import DivineRootsSection from "@/components/DivineRootsSection";
 import TrimurtiSection from "@/components/TrimurtiSection";
@@ -11,9 +13,9 @@ import RevivalSection from "@/components/RevivalSection";
 import MaghaMasamSection from "@/components/MaghaMasamSection";
 import BharathappuzhaSection from "@/components/BharathappuzhaSection";
 import CallToDharmaSection from "@/components/CallToDharmaSection";
-import ContactSection from "@/components/ContactSection";
 import EventScheduleSection from "@/components/EventScheduleSection";
 import GallerySection from "@/components/GallerySection";
+import FooterSection from "@/components/FooterSection";
 import RegistrationModal from "@/components/RegistrationModal";
 
 const Index = () => {
@@ -38,9 +40,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <AnnouncementBar />
       <Navigation onRegisterClick={handleRegisterClick} />
       <main>
         <HeroSection onRegisterClick={handleRegisterClick} />
+        <QuickInfoGrid onRegisterClick={handleRegisterClick} />
         <IntroductionSection />
         <EventScheduleSection onRegisterClick={handleRegisterClick} />
         <GallerySection />
@@ -53,7 +57,7 @@ const Index = () => {
         <MaghaMasamSection />
         <BharathappuzhaSection />
         <CallToDharmaSection />
-        <ContactSection onRegisterClick={handleRegisterClick} />
+        <FooterSection onRegisterClick={handleRegisterClick} />
       </main>
       <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,47 +6,52 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 0 0% 8%;
+    --background: 45 50% 98%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 25 95% 53%;
+    --primary: 24 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 30% 94%;
-    --secondary-foreground: 0 0% 8%;
+    --secondary: 45 40% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 35 20% 92%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 45 30% 94%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 25 95% 53%;
+    --accent: 0 70% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 25 95% 53%;
+    --border: 45 25% 88%;
+    --input: 45 25% 88%;
+    --ring: 24 100% 50%;
 
     --radius: 0.5rem;
 
-    /* Custom sacred colors */
-    --saffron: 25 95% 53%;
-    --saffron-light: 30 90% 65%;
-    --saffron-dark: 20 95% 42%;
-    --gold: 43 74% 49%;
-    --cream: 40 30% 96%;
-    --sacred-border: 35 30% 85%;
+    /* Kumbh Mela inspired colors */
+    --saffron: 24 100% 50%;
+    --saffron-light: 30 95% 60%;
+    --saffron-dark: 20 100% 40%;
+    --maroon: 0 70% 35%;
+    --maroon-light: 0 60% 45%;
+    --gold: 43 80% 52%;
+    --gold-light: 45 85% 65%;
+    --cream: 45 50% 97%;
+    --cream-dark: 40 35% 92%;
+    --sacred-border: 45 30% 85%;
+    --deep-brown: 25 40% 18%;
 
     /* Typography */
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Source Sans 3', sans-serif;
+    --font-display: 'Crimson Text', serif;
+    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -55,7 +60,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 25 95% 53%;
+    --sidebar-ring: 24 100% 50%;
   }
 }
 
@@ -80,36 +85,121 @@
 
 @layer components {
   .section-container {
-    @apply max-w-5xl mx-auto px-6 md:px-8;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4;
     font-family: var(--font-display);
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-primary font-medium tracking-wide uppercase mb-4;
+    @apply text-sm md:text-base text-primary font-semibold tracking-widest uppercase mb-3;
     font-family: var(--font-body);
-    letter-spacing: 0.15em;
   }
 
   .body-text {
-    @apply text-lg leading-relaxed text-muted-foreground;
+    @apply text-base md:text-lg leading-relaxed text-muted-foreground;
     font-family: var(--font-body);
   }
 
   .sacred-divider {
-    @apply w-24 h-0.5 bg-primary mx-auto my-8;
+    @apply w-20 h-1 bg-gradient-to-r from-primary via-gold to-primary mx-auto my-6;
   }
 
   .sacred-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e67e22' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF8C00' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Mandala border pattern */
+  .mandala-border {
+    position: relative;
+  }
+
+  .mandala-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)), transparent);
+  }
+
+  /* Card with sacred shadow */
+  .sacred-card {
+    @apply bg-card rounded-xl border border-sacred-border;
+    box-shadow: 0 4px 20px -4px hsl(var(--saffron) / 0.1), 0 8px 30px -8px hsl(var(--gold) / 0.08);
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg;
+    @apply hover:bg-saffron-dark transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg;
+    @apply hover:bg-maroon-light transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg;
+    @apply hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+  }
+
+  /* News ticker */
+  .news-ticker {
+    @apply bg-accent text-accent-foreground py-2 overflow-hidden;
+  }
+
+  .ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* Decorative elements */
+  .om-symbol::before {
+    content: 'ॐ';
+    @apply text-primary/20;
+  }
+
+  /* Quick info grid */
+  .info-card {
+    @apply bg-card p-6 rounded-xl border border-sacred-border;
+    @apply hover:border-primary/50 hover:shadow-lg transition-all duration-300;
+    @apply flex flex-col items-center text-center gap-3;
+  }
+
+  .info-card-icon {
+    @apply w-14 h-14 rounded-full bg-gradient-to-br from-primary to-saffron-dark;
+    @apply flex items-center justify-center text-primary-foreground;
   }
 }
 
 @layer utilities {
   .text-gradient-saffron {
-    @apply bg-gradient-to-r from-primary via-saffron-light to-primary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-gold to-primary bg-clip-text text-transparent;
+  }
+
+  .text-gradient-maroon {
+    @apply bg-gradient-to-r from-accent via-maroon-light to-accent bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-sacred {
+    background: linear-gradient(135deg, hsl(var(--cream)) 0%, hsl(var(--cream-dark)) 100%);
+  }
+
+  .bg-gradient-saffron {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--saffron-dark)) 100%);
   }
 }
