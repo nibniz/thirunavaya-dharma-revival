@@ -9,14 +9,14 @@ const announcements = [
 
 const AnnouncementBar = () => {
   return (
-    <div className="bg-accent text-accent-foreground py-2 overflow-hidden relative">
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-accent text-accent-foreground py-2 overflow-hidden">
       <motion.div
         className="flex whitespace-nowrap"
-        animate={{ x: ["100%", "-100%"] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       >
-        {[...announcements, ...announcements].map((text, index) => (
-          <span key={index} className="mx-8 text-sm font-medium">
+        {[...announcements, ...announcements, ...announcements, ...announcements].map((text, index) => (
+          <span key={index} className="mx-8 text-xs md:text-sm font-medium">
             {text}
           </span>
         ))}

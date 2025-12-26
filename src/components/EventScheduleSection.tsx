@@ -1,6 +1,7 @@
-import SectionWrapper from "./SectionWrapper";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Sun, Moon, Flame } from "lucide-react";
+import galleryRiver from "@/assets/gallery-river.jpg";
+import galleryYajna from "@/assets/gallery-yajna.jpg";
 
 interface ScheduleItem {
   time: string;
@@ -61,106 +62,193 @@ interface EventScheduleSectionProps {
 
 const EventScheduleSection = ({ onRegisterClick }: EventScheduleSectionProps) => {
   return (
-    <SectionWrapper id="schedule" className="bg-gradient-sacred sacred-pattern">
-      <div className="text-center mb-12">
-        <span className="section-subtitle">Event Schedule</span>
-        <h2 className="section-title">Sacred Bathing Dates</h2>
-        <div className="sacred-divider" />
-        <p className="body-text max-w-3xl mx-auto">
-          Experience three days of spiritual immersion during the auspicious Magha Masam. 
-          Join us in this sacred revival of ancient traditions.
-        </p>
-      </div>
+    <section id="schedule" className="relative py-16 md:py-24 overflow-hidden">
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-gradient-sacred" />
+      <div className="absolute inset-0 sacred-pattern opacity-30" />
 
-      {/* Bathing Dates Legend */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex justify-center gap-6 mb-10"
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-gradient-to-r from-primary to-saffron-dark" />
-          <span className="text-sm font-medium text-foreground">Shahi Snan</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-gradient-to-r from-gold to-gold-light" />
-          <span className="text-sm font-medium text-foreground">Regular Snan</span>
-        </div>
-      </motion.div>
+      <div className="section-container relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-8 md:mb-12"
+        >
+          <span className="section-subtitle">Event Schedule</span>
+          <h2 className="section-title">Sacred Bathing Dates</h2>
+          <div className="sacred-divider" />
+          <p className="body-text max-w-3xl mx-auto px-4">
+            Experience three days of spiritual immersion during the auspicious Magha Masam. 
+            Join us in this sacred revival of ancient traditions.
+          </p>
+        </motion.div>
 
-      <div className="grid lg:grid-cols-3 gap-6">
-        {scheduleData.map((day, dayIndex) => (
-          <motion.div
-            key={day.date}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: dayIndex * 0.1 }}
-            className="sacred-card overflow-hidden"
-          >
-            {/* Day Header */}
-            <div className={`p-6 ${day.type === "shahi" 
-              ? "bg-gradient-to-r from-primary to-saffron-dark" 
-              : "bg-gradient-to-r from-gold to-gold-light"
-            } text-primary-foreground`}>
-              <div className="flex items-center gap-3 mb-2">
-                <Calendar className="w-5 h-5" />
-                <span className="text-sm font-medium opacity-90">{day.date}</span>
+        {/* Hero Image Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative rounded-2xl overflow-hidden mb-10 md:mb-14 mx-4 md:mx-0"
+        >
+          <div className="grid md:grid-cols-2 gap-1">
+            <div className="relative h-48 md:h-64 overflow-hidden">
+              <img
+                src={galleryRiver}
+                alt="Sacred river bathing"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-primary-foreground">
+                <p className="text-xs md:text-sm font-semibold uppercase tracking-wider text-gold">Sacred Bathing</p>
+                <p className="text-lg md:text-xl font-display font-bold">Bharathappuzha River</p>
               </div>
-              <h3 className="font-display text-xl font-bold">{day.day}</h3>
-              {day.type === "shahi" && (
-                <span className="inline-block mt-2 px-3 py-1 bg-primary-foreground/20 rounded-full text-xs font-semibold">
-                  Shahi Snan Day
-                </span>
-              )}
             </div>
+            <div className="relative h-48 md:h-64 overflow-hidden">
+              <img
+                src={galleryYajna}
+                alt="Sacred fire ceremony"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-primary-foreground">
+                <p className="text-xs md:text-sm font-semibold uppercase tracking-wider text-gold">Divine Rituals</p>
+                <p className="text-lg md:text-xl font-display font-bold">Mahamagha Yajna</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
-            {/* Events */}
-            <div className="p-6 space-y-4">
-              {day.events.map((event, eventIndex) => (
-                <motion.div
-                  key={event.time}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: eventIndex * 0.05 }}
-                  className="flex gap-4 items-start group"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                    <event.icon className="w-5 h-5 text-primary" />
+        {/* Bathing Dates Legend */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-4 md:gap-6 mb-8 md:mb-10"
+        >
+          <div className="flex items-center gap-2">
+            <motion.div 
+              className="w-4 h-4 rounded-full bg-gradient-to-r from-primary to-saffron-dark"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <span className="text-xs md:text-sm font-medium text-foreground">Shahi Snan (Special)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <motion.div 
+              className="w-4 h-4 rounded-full bg-gradient-to-r from-gold to-gold-light"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            />
+            <span className="text-xs md:text-sm font-medium text-foreground">Regular Snan</span>
+          </div>
+        </motion.div>
+
+        {/* Schedule Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 px-4 md:px-0">
+          {scheduleData.map((day, dayIndex) => (
+            <motion.div
+              key={day.date}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: dayIndex * 0.15 }}
+              whileHover={{ y: -5 }}
+              className="sacred-card overflow-hidden"
+            >
+              {/* Day Header */}
+              <motion.div 
+                className={`p-4 md:p-6 ${day.type === "shahi" 
+                  ? "bg-gradient-to-r from-primary to-saffron-dark" 
+                  : "bg-gradient-to-r from-gold to-gold-light"
+                } text-primary-foreground relative overflow-hidden`}
+                whileHover={{ backgroundPosition: "200% center" }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Animated background pattern */}
+                <div className="absolute inset-0 opacity-20">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="absolute -right-10 -top-10 text-8xl font-display"
+                  >
+                    ॐ
+                  </motion.div>
+                </div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
+                    <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="text-xs md:text-sm font-medium opacity-90">{day.date}</span>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Clock className="w-3.5 h-3.5 text-muted-foreground" />
-                      <span className="text-xs font-semibold text-primary">{event.time}</span>
+                  <h3 className="font-display text-lg md:text-xl font-bold">{day.day}</h3>
+                  {day.type === "shahi" && (
+                    <motion.span 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="inline-block mt-2 px-3 py-1 bg-primary-foreground/20 rounded-full text-[10px] md:text-xs font-semibold"
+                    >
+                      ✨ Shahi Snan Day
+                    </motion.span>
+                  )}
+                </div>
+              </motion.div>
+
+              {/* Events */}
+              <div className="p-4 md:p-6 space-y-3 md:space-y-4">
+                {day.events.map((event, eventIndex) => (
+                  <motion.div
+                    key={event.time}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: eventIndex * 0.08 }}
+                    className="flex gap-3 md:gap-4 items-start group cursor-pointer"
+                  >
+                    <motion.div 
+                      className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary/10 transition-colors"
+                      whileHover={{ scale: 1.1, rotate: 10 }}
+                    >
+                      <event.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                    </motion.div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5 md:mb-1">
+                        <Clock className="w-3 h-3 md:w-3.5 md:h-3.5 text-muted-foreground" />
+                        <span className="text-[10px] md:text-xs font-semibold text-primary">{event.time}</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground text-xs md:text-sm group-hover:text-primary transition-colors truncate">
+                        {event.event}
+                      </h4>
+                      <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5 line-clamp-2">{event.description}</p>
                     </div>
-                    <h4 className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors">
-                      {event.event}
-                    </h4>
-                    <p className="text-xs text-muted-foreground mt-0.5">{event.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-      {/* CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mt-12"
-      >
-        <p className="text-muted-foreground mb-4">Secure your place in this sacred gathering</p>
-        <button onClick={onRegisterClick} className="btn-primary text-lg px-10 py-4">
-          Register for the Event
-        </button>
-      </motion.div>
-    </SectionWrapper>
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-10 md:mt-12 px-4"
+        >
+          <p className="text-muted-foreground mb-4 text-sm md:text-base">Secure your place in this sacred gathering</p>
+          <motion.button 
+            onClick={onRegisterClick} 
+            className="btn-primary text-base md:text-lg px-8 md:px-10 py-3 md:py-4"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Register for the Event
+          </motion.button>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
